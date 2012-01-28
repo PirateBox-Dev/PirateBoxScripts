@@ -1,0 +1,152 @@
+#!/bin/sh
+# /etc/init.d/piratebox
+
+### BEGIN INIT INFO
+# Provides:          piratebox
+# Required-Start:    $network
+# Required-Stop:     $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      1 0
+# Short-Description: All services around piratebox
+# Description:       Based on /opt/piratebox/conf/piratebox.conf starts:  * DNSMASQ * HOSTAPD * DROOPY * WLAN-config * CHAT
+### END INIT INFO
+
+###  
+#  Default start-stop script for piratebox services on a laptop
+#   written by Matthias Strubel  (matthias.strubel@aod-rpg.de) 2011-02-22 
+#  licenced by gpl, feel free to improve and send me comments
+
+
+[ -f /etc/default/rcS ] && . /etc/default/rcS
+
+# PATH for /opt piratebox folder
+PATH=/bin:/usr/bin:/sbin:/usr/sbin:/opt/piratebox/bin
+
+PIDFILE_SIMPLE=/var/run/piratebox_simple.pid
+PIDFILE_DROOPY=/var/run/piratebox_droopy.pid
+PIDFILE_HOSTAPN=/var/run/piratebox_hostapn.pid
+PIDFILE_DNSMASQ=/var/run/piratebox_dnsmasq.pid
+PIDFILE_CHAT=/var/run/piratebox_chat.pid
+
+PIRATEBOX=/opt/piratebox
+CONF=$PIRATEBOX/conf/piratebox.conf
+#CONF_DROOPY=/opt/piratebox/conf/droopy.conf #not used
+CONF_APN=$PIRATEBOX/conf/hostapd.conf
+
+#Some extra config files for dnsmasq
+CONF_HOSTS=$PIRATEBOX/conf/hosts
+
+
+if [ -f $CONF ] ; then
+   . $CONF 
+else 
+   echo "Configuration file not found"
+   exit 1
+fi
+
+# Command Line for DNSMASQ,  use extra host-file and listen to  configured ip only ; no resolv.conf
+#     forward only to piratebox ip
+#    -K  for taking over whole net
+#    -F  activating dhcp server ... 
+#    -9 no leasefile
+CMD_DNSMASQ="-x $PIDFILE_DNSMASQ  -h -H $CONF_HOSTS -a $IP  -R  --address=/#/$IP -K --dhcp-range=$IPSTART,$IPEND -l $PIRATEBOX/tmp/leases"
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+  start)
+    echo "Starting script piratebox "
+
+    if [ "$DO_IW" = "yes" ] ; then
+       log_daemon_msg " Setting up Interface (iw) "
+       iw $PHY_IF interface add $INTERFACE type managed
+    fi
+
+    if [ "$DO_IFCONFIG" = yes ] ; then
+      echo "  Setting up wlan"
+      #Setting up WLAN Interface
+      piratebox_setup_wlan.sh  $CONF start
+    fi
+     if  [ $? -ne 0 ] ;  then
+       echo "failed setting up Interface"
+     else
+
+       # Only  activate
+       if  [ "$USE_APN" =  "yes" ] ;  then
+         echo  "Starting hostap... "
+         start-stop-daemon -m -S -b -p $PIDFILE_HOSTAPN  -x /usr/sbin/hostapd --  $CONF_APN
+         echo  $?
+       fi
+       if [ "$USE_DNSMASQ" = "yes" ] ;  then
+         echo  "Starting dnsmasq... "
+   # pidfile is written by dnsmasq
+         start-stop-daemon -S -q -x /usr/sbin/dnsmasq  --  $CMD_DNSMASQ  
+         echo  $?
+       fi
+
+       #Start here the PirateBox-Parts droopy i.e.
+       echo "Starting droopy..."
+       start-stop-daemon -m -S -b  -p $PIDFILE_DROOPY -x $PIRATEBOX/bin/droopy -- -H $HOST -d $FOLDER -p $IMAGE -m "$TEXT" 
+       echo  $?
+
+       #Start SimpleHTTP 
+       echo "Starting SimpleHTTP..."
+       start-stop-daemon -m -S  -b -p $PIDFILE_SIMPLE -x $PIRATEBOX/bin/simpleserver.sh -- $FOLDER  $PIRATEBOX
+       echo  $?
+
+       #Starting shoutbox-service
+       echo "Starting Shoutbox-service..."
+       start-stop-daemon -m -S -b -p $PIDFILE_CHAT -x $PIRATEBOX/bin/chatserver.sh -- $CHATFOLDER
+       echo  $?
+       #Writing init-message and reset chat..
+       echo $CHATMSG > $CHATFOLDER/cgi-bin/data.pso  
+     fi
+
+    ;;
+  stop)
+    echo  "Stopping script piratebox"
+    if [  "$USE_APN"  = "yes" ] ;  then
+       echo  "Stopping hostap... "
+       start-stop-daemon -K  -q  -p $PIDFILE_HOSTAPN 
+       echo   $?
+    fi
+    if [ "$USE_DNSMASQ" = "yes" ] ;  then 
+       echo "Stopping dnsmasq..."
+       start-stop-daemon -K  -q  -p $PIDFILE_DNSMASQ  
+       echo  $?
+    fi
+
+    #Kill Droopy
+    echo "Stopping droopy... "
+    start-stop-daemon -K  -q -p  $PIDFILE_DROOPY 
+    echo  $?
+
+    #Stop SimpleHTTP Server
+    echo  "Stopping SimpleHTTP..."
+    start-stop-daemon -K  -q  -p $PIDFILE_SIMPLE  
+    echo  $?
+
+     #Remove tmp files (depend. to droopy)
+     rm -f  "$FOLDER/tmp*"
+
+     if [ "$DO_IFCONFIG" = yes ] ; then
+       piratebox_setup_wlan.sh $CONF stop
+     fi
+
+     if [ "$DO_IW" = "yes" ] ; then
+       iw dev $INTERFACE del
+     fi
+
+
+     # Stop Chatservice
+     echo "Stopping chat-service..." 
+     start-stop-daemon -K  -q -p $PIDFILE_CHAT
+     echo  $?
+
+    ;;
+  *)
+    echo "Usage: /etc/init.d/piratebox {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
