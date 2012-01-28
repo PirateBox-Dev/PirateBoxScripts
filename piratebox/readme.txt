@@ -11,9 +11,9 @@
 ##                changed hostname to piratebox.lan  (look@piratebox.conf $HOST option for more info)
 ##   2011-06-03   added init.d script for routers ; changed references on script-headers
 ##                added tmp dir with lease file
-##   2012-01-22   Fixed DomainBug
 ##   2011-12-19   Some Bugfixes ; Added IW option 
- 
+##   2012-01-22   Fixed DomainBug
+
 What to do? / Install
 ---------------------
   > Install debian
