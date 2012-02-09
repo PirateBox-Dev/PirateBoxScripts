@@ -1,4 +1,4 @@
-#!/usr/bin/perl -wT
+#!/usr/bin/perl -w
 
 use strict;
 use CGI;
@@ -16,11 +16,11 @@ my $global = {};
 $global->{'message'} = "
 <b>1.</b> Learn more about the project <a href=\"/.READ.ME.htm\" target=\"_parent\"><b>here</b></a>.
 <p><b>2.</b> Click button below to begin sharing.</p>
-<b>3.</b> Browse and download files <a href=\"/share/\" target=\"_parent\"><b>here</b></a>.<br /> <br />";
+<b>3.</b> Browse and download files <a href=\"/unsorted\" target=\"_parent\"><b>here</b></a>.<br /> <br />";
 
 $global->{'htmlpicture'} = "<img src='/piratebox-logo-small.png' alt='piratebox-logo' />";
 $global->{'linkurl'} = "";
-$global->{'upload_dir'} = "/opt/piratebox/share";
+$global->{'upload_dir'} = "../share/unsorted";
 
 ### <------------- Language Section ----------------->
 
@@ -63,7 +63,7 @@ $curr_lang = $lang->{'en'};
 
 sub template_style () {
   my $var = '<!-- Style template Start --> 
-<LINK rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+<LINK rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 <style type="text/css">
 <!--
 * {margin: 0; padding: 0;}
@@ -122,7 +122,7 @@ function onunload() {
   $var .=  template_userinfo() ; 
   $var .=' <div id="wrap">  <div id="wrapform">
     <div id="form">
-      <form method="post" enctype="multipart/form-data" action="droopy.cgi">
+      <form method="post" enctype="multipart/form-data" action="droopy.pl">
         <input type="hidden" name="action" value="do_upload" />
         <input name="upfile" type="file">
         <input value="';
@@ -135,7 +135,8 @@ function onunload() {
       </tr></table>
     </div>
   </div>';
-  $var .=  template_piratebox_chat () .'
+
+  $var .=  template_piratebox_board () .'
 
 </center>
 </body> </html>
@@ -159,9 +160,9 @@ $curr_lang->{"successtitle"} . '</title>
 <div id="wrap">
   <div id="wrapform">
  '.    $curr_lang->{"received"} .'
-   <a href="droopy.cgi"> '. $curr_lang->{'another'}  .'</a>
+   <a href="droopy.pl"> '. $curr_lang->{'another'}  .'</a>
   </div>
-' .template_piratebox_chat ().' 
+' .template_piratebox_board ().' 
 </div></center>
 </body>
 </html>
@@ -186,7 +187,7 @@ sub template_error () {
     </div>
 </div>
 
-'. template_piratebox_chat () .'
+'. template_piratebox_board () .'
 </center>
 </body>
 </html>
@@ -195,13 +196,9 @@ return $var;
 }
 
 
-sub template_piratebox_chat () {
-  my $var = ' <iframe
-height="400"
-width="650"
-frameBorder="0"
-src="../chat.html">
-</iframe> ';
+sub template_piratebox_board () {
+  my $var = " <a href='/board/kareha.pl' target='_parent'>Feel free for an open discussion here</a>";
+
   return $var;
  
 }
@@ -229,8 +226,13 @@ sub do_upload () {
   $filename =~ s/[^$safe_filename_characters]//g;
 
   if ( $filename =~ /^([$safe_filename_characters]+)$/ )
-  {
-    $filename = $1;
+  {  
+  # Not allow index.* names
+     if ( $filename =~ /index\.\w+/ ) {
+        die "Not allowed to upload index-files";
+     } else { 
+        $filename = $1;
+     }
   } else  {
     die "Filename contains invalid characters";
   }

@@ -3,14 +3,13 @@
 ##   licenced by gpl ;; please feel for improvements or feedback :)
 ##  Changes:
 ##    2011-03-19  First concept release with shoutbox left in python and droopy in perl
+##    2011-08-04  Image-Board integration
 ##
  
 What to do? / Install
 ---------------------
   > Install debian
   > Install following Packages:
-     - Python
-     #  apt-get install python
      - Perl  
      #  apt-get install perl
      - lighttpd
@@ -18,9 +17,6 @@ What to do? / Install
      - if needed : hostapn and/or dnsmasq
      # apt-get install hostapn
      # apt-get install dnsmasq
-
-  > configure your share-folder (where should the uploaded file put to?)
-  >   in my case, I used /opt/piratebox/share
 
   > copy over the piratebox folder into /opt/ (as root)
     # sudo mkdir /opt 
@@ -35,10 +31,26 @@ What to do? / Install
     # /opt/piratebox/conf/piratebox.conf        # Start which services, IPs etc
     # /opt/piratebox/conf/hostapd.conf          # Some stuff about beeing an APN 
 
+  > Now please mount your usb-stick, share drive .. 
+ 
+  > Run the follow script 
+    # /opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf part2    
+
+  > If you want to install kareha, please do the following steps:
+     >> Download the Kareha imageboard from this link
+         http://wakaba.c3.cx/releases/kareha_3.1.4.zip
+     >> unzip the zip and copy the content into /opt/piratebox/share/board
+     >> Then you can run  
+    # /opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf imageboard
+     >> This step installs a basic configuration for the board... 
+     >> Edit /opt/piratebox/share/board/config.pl and change ADMIN_PASS and SECRET
+
 I created
 /opt/piratebox/bin    - Binarys and Scripts
 /opt/piratebox/conf   - Piratebox related configs (seperated from the normal system-configs!)
 /opt/piratebox/share  - Mountpoint (with the first start of piratebox, the correct permissions will be set)
+/opt/piratebox/share/unsorted   -  Unsorted upload folder
+/opt/piratebox/share/board      -  imageboard location
 /opt/piratebox/init.d - the init-script (later more?)
 /opt/piratebox/www    - Webfolder with cgi-scripts and static html pages
 /opt/piratebox/tmp    - Folder with the error-log
@@ -48,13 +60,6 @@ My cgi-droopy script
 ----------------------
 Its based on the original droopy script with the modifications by David Darts. It doesn't support language switching support
 yet.
-
-
-Chatbox/Shoutbox-Integration
--------------------
-The Shoutbox is by J-Tech (http://joeyjwc.x3fusion.com). He uses a fix path for the datafile. Because of pointing this path to the /chat folder (yes... in the root directory ),
-I changed this path in the chat/cgi-bin/pso*.py scripts to /opt/piratebox/chat/cgi-bin/.
-If you plan to put your files somewhere else, you need to change the path in the mentioned scripts.
 
 
 Change directory?
@@ -74,14 +79,3 @@ and disable other services, you don't need
  i.e.  # update-rc.d acpid disable 4
 These examples are for debian based distributions.
 
-
-What will bring the future?
----------------------------
-My imagination is to create a boot-up entry in grub, for booting the piratebox-setup or as a normal netbook. 
-I want realize this with an extra runlevel configurated for the piratebox. In fact you have to stop special options of acpi to not go to standby in "piratebox"-mode.
-For sure, I have some other ideas for creating flexible crypted datasets ;)
-Maybe I'll create a script for changing the hosts file taking account of the settings from the piratebox.conf - we'll see ;)
-
-Thank you for trying or using my scripts :)
-
-  

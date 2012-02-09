@@ -48,7 +48,7 @@ fi
 
 ###  Do the stuff
 
-if [ $2 ==  "start" ] ; then
+if [ $2 =  "start" ] ; then
   echo "Bringing up wifi interface $INTERFACE "
   ifconfig $INTERFACE up 
 
@@ -65,7 +65,7 @@ if [ $2 ==  "start" ] ; then
      exit 1
   fi
 
-elif [ $2 == "stop" ] ; then
+elif [ $2 = "stop" ] ; then
   echo "Stopping wifi interface $INTERFACE "
   ifconfig $INTERFACE down
 fi
