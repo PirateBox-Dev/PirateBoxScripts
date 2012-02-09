@@ -1,4 +1,4 @@
-#!/usr/bin/perl -wT
+#!/usr/bin/perl -w
 
 use strict;
 use CGI;
@@ -20,7 +20,7 @@ $global->{'message'} = "
 
 $global->{'htmlpicture'} = "<img src='/piratebox-logo-small.png' alt='piratebox-logo' />";
 $global->{'linkurl'} = "";
-$global->{'upload_dir'} = "/opt/piratebox/share";
+$global->{'upload_dir'} = "../share";
 
 ### <------------- Language Section ----------------->
 
