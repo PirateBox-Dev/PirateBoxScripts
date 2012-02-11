@@ -13,6 +13,7 @@
 ##                added tmp dir with lease file
 ##   2011-12-19   Some Bugfixes ; Added IW option 
 ##   2012-01-22   Fixed DomainBug
+##   2012-02-11   Fixed some hostname bugs and a wrong path in .READ.ME.txt
 
 What to do? / Install
 ---------------------
@@ -24,15 +25,25 @@ What to do? / Install
      #   ((courage)) ;)
 
   > configure your share-folder (where should the uploaded file put to?)
-  >   in my case, I used /opt/piratebox/share
-
+  >   link   or mount your destination folder to /opt/piratebox/share
+     # rm /opt/piratebox/share & ln -s /mountpoint /opt/piratebox/share
+     or
+     # mount /dev/usbstick /opt/piratebox/share
   > copy over the piratebox folder into /opt/ (as root)
      # sudo cp -rv piratebox /opt 
   > create a symlink /opt/piratebox/init.d/piratebox /etc/init.d/
      # sudo ln -s /opt/piratebox/init.d/piratebox /etc/init.d/piratebox  
   > add piratebox to you runlevel (optional)
-    # sudo  update-rc.d piratebox defaults 
+    # sudo  update-rc.d piratebox defaults
+  >   link   or mount your destination folder to /opt/piratebox/share
+      # rm /opt/piratebox/share & ln -s /mountpoint /opt/piratebox/share
+      or
+      # mount /dev/usbstick /opt/piratebox/share
   > copy over the *.htm files from the /opt/piratebox/src/ folder to your share-folder
+     # cp -v /opt/piratebox/src/.* /opt/piratebox/share
+     # cp -v /opt/piratebox/src/*  /opt/piratebox/share
+  >  Ensure you copied all .* files  
+      # ls -la /opt/piratebox/share 
   > define your personall options in
     # /opt/piratebox/conf/piratebox.conf        # Start which services, IPs etc
     # /opt/piratebox/conf/hostapd.conf          # Some stuff about beeing an APN 
