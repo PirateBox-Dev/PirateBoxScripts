@@ -14,6 +14,7 @@
 ##   2011-12-19   Some Bugfixes ; Added IW option 
 ##   2012-01-22   Fixed DomainBug
 ##   2012-02-11   Fixed some hostname bugs and a wrong path in .READ.ME.txt
+##   2012-02-24   Fixed Bridging-Option
 
 What to do? / Install
 ---------------------
@@ -73,13 +74,6 @@ and disable other services, you don't need
  i.e.  # update-rc.d acpid disable 4
 These examples are for debian based distributions.
 
-
-What will bring the future?
----------------------------
-My imagination is to create a boot-up entry in grub, for booting the piratebox-setup or as a normal netbook. 
-I want realize this with an extra runlevel configurated for the piratebox. In fact you have to stop special options of acpi to not go to standby in "piratebox"-mode.
-For sure, I have some other ideas for creating flexible crypted datasets ;)
-Maybe I'll create a script for changing the hosts file taking account of the settings from the piratebox.conf - we'll see ;)
 
 Thank you for trying or using my scripts :)
 
