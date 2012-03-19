@@ -15,6 +15,7 @@
 ##   2012-01-22   Fixed DomainBug
 ##   2012-02-11   Fixed some hostname bugs and a wrong path in .READ.ME.txt
 ##   2012-02-24   Fixed Bridging-Option
+##   2012-03-19   Fixed droopy indexhtml
 
 What to do? / Install
 ---------------------
