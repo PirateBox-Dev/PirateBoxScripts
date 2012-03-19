@@ -6,6 +6,7 @@
 # Licensed under the New BSD License.
 
 # Changelog
+#   20120317 * MStrubel; no upload of index.html
 #   20110314 * MStrubel; hostname as param
 #   20110310 * MStrubel; Centraized PB-Chat and hostname :)
 #   20110225 * Customized CSS and HTML for PirateBox with Chat
@@ -634,6 +635,14 @@ class HTTPUploadHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 self.send_header('Location', '/')
                 self.end_headers()
                 return
+	
+	#20120317 Start
+	    if filename.lower() == "index.html" or filename.lower() == "index.htm":
+                   self.send_response(303)
+                   self.send_header('Location', '/')
+                   self.end_headers()
+                   return
+	#20120317 End
             
             localpath = os.path.join(directory, filename).encode('utf-8')
             root, ext = os.path.splitext(localpath)
