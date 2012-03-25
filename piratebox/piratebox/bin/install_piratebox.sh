@@ -25,6 +25,7 @@ if [ $2 = 'init_openwrt' ] ; then
   cp -v $pb_pbmount/src/* "$pb_share"
   cp -v $pb_pbmount/src/.* $pb_share
   touch "$pb_pbmount/conf/init_done"
+  cp /usr/share/piratebox/CGIHTTPServer.py $pb_pbmount/chat
 fi
 
   
