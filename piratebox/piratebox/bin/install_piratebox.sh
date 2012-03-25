@@ -22,7 +22,8 @@ fi
 if [ $2 = 'init_openwrt' ] ; then
   #Load openwrt-common config and procedures file!
   . /etc/piratebox.common
-  cp -va "$pb_pbmount/src/*" "$pb_share"
+  cp -v $pb_pbmount/src/* "$pb_share"
+  cp -v $pb_pbmount/src/.* $pb_share
   touch "$pb_pbmount/conf/init_done"
 fi
 
