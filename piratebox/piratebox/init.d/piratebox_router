@@ -103,6 +103,7 @@ $BRIDGE  $INTERFACE "
 
        #Start here the PirateBox-Parts droopy i.e.
        echo "Starting droopy..."
+       rm  $FOLDER/tmp*
        start-stop-daemon -m -S -b  -p $PIDFILE_DROOPY -x $PIRATEBOX/bin/droopy -- -H $HOST -d $FOLDER -p $IMAGE -m "$TEXT" 
        echo  $?
 
