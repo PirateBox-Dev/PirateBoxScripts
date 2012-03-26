@@ -46,6 +46,8 @@ fi
 
 #If you can't find this file 
 if [[ "$OPENWRT" = "yes" &&  -f $PIRATEBOX/conf/init_done ]] ; then
+   INIT=OK
+else
    $PIRATEBOX/bin/install_piratebox.sh "$CONF" init_openwrt 
 fi
 
