@@ -106,6 +106,8 @@ $BRIDGE  $INTERFACE "
        #Start here the PirateBox-Parts droopy i.e.
        echo "Starting droopy..."
        rm  $FOLDER/tmp*
+       #Delete 0 Byte Files
+       delete_empty.sh  $FOLDER
        start-stop-daemon -m -S -b  -p $PIDFILE_DROOPY -x $PIRATEBOX/bin/droopy -- -H $HOST -d $FOLDER -p $IMAGE -m "$TEXT" 
        echo  $?
 
