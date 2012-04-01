@@ -70,6 +70,17 @@ I changed this path in the chat/cgi-bin/pso*.py scripts to /opt/piratebox/chat/c
 If you plan to put your files somewhere else, you need to change the path in the mentioned scripts.
 
 
+Forum
+-----
+Thank you Andrew Nelis for providing the software.  http://www.triv.org.uk/~nelis/forest
+You can enabling the python Forum doing the following steps:
+  /opt/piratebox/init.d/piratebox stop
+  cd /opt/piratebox
+  bin/install_piratebox.sh conf/piratebox.conf pyForum
+  vi conf/piratebox.conf
+     and uncomment the FORUM_LINK_HTML line containing the link
+  /opt/piratebox/init.d/piratebox start
+
 Seperate Runlevel
 -----------------
 I'm using the piratebox on another runlevel, because I don't want to use it on daily work. So do not use the above update-rc.d command if you don't intend to start it always.
@@ -82,4 +93,3 @@ These examples are for debian based distributions.
 
 Thank you for trying or using my scripts :)
 
-  

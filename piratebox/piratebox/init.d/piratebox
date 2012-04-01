@@ -127,6 +127,7 @@ $BRIDGE  $INTERFACE "
     ;;
   stop)
     log_daemon_msg  "Stopping script piratebox"
+    echo ""
     if [  "$USE_APN"  = "yes" ] ;  then
        log_daemon_msg  "Stopping hostap... "
        start-stop-daemon --stop --quiet  --pidfile $PIDFILE_HOSTAPN  --oknodo  --startas "hostapd"
