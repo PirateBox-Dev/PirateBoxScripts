@@ -56,7 +56,7 @@ fi
 #    -K  for taking over whole net
 #    -F  activating dhcp server ... 
 #    -9 no leasefile
-CMD_DNSMASQ="-x $PIDFILE_DNSMASQ  -h -H $CONF_HOSTS -R  --address=/#/$IP -K --dhcp-range=$IPSTART,$IPEND -l $PIRATEBOX/tmp/leases"
+CMD_DNSMASQ="-x $PIDFILE_DNSMASQ $DNSMASQ_INTERFACE -h -H $CONF_HOSTS -R  --address=/#/$IP -K --dhcp-range=$IPSTART,$IPEND -l $PIRATEBOX/tmp/leases"
 
 # Carry out specific functions when asked to by the system
 case "$1" in

@@ -16,6 +16,10 @@
 ##   2012-02-11   Fixed some hostname bugs and a wrong path in .READ.ME.txt
 ##   2012-02-24   Fixed Bridging-Option
 ##   2012-03-19   Fixed droopy indexhtml
+##   2012-04-01   New Feature: Basic python-Forum -> 
+##                              http://www.triv.org.uk/~nelis/forest
+##                              https://github.com/thatotherguy/piratebox
+##                Configure dnsmasq interface in piratebox.conf
 
 What to do? / Install
 ---------------------

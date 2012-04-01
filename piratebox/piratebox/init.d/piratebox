@@ -52,7 +52,7 @@ fi
 #     forward only to piratebox ip
 #    -K  for taking over whole net
 #    -F  activating dhcp server ... 
-CMD_DNSMASQ="-x $PIDFILE_DNSMASQ  -h -H $CONF_HOSTS -a $IP  -R  --address=/#/$IP -K --dhcp-range=$IPSTART,$IPEND"
+CMD_DNSMASQ="-x $PIDFILE_DNSMASQ $DNSMASQ_INTERFACE -h -H $CONF_HOSTS -R  --address=/#/$IP -K --dhcp-range=$IPSTART,$IPEND"
 
 # Carry out specific functions when asked to by the system
 case "$1" in
