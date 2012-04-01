@@ -119,7 +119,9 @@ $BRIDGE  $INTERFACE "
        log_end_msg $?
        #Writing init-message and reset chat..
        chmod 777 $CHATFOLDER/cgi-bin/data.pso
-       echo $CHATMSG > $CHATFOLDER/cgi-bin/data.pso  
+       if [ "$RESET_CHAT"  = "yes" ] ; then 
+           echo $CHATMSG > $CHATFOLDER/cgi-bin/data.pso  
+       fi
      fi
 
     ;;

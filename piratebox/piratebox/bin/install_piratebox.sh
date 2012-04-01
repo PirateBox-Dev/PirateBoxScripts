@@ -7,6 +7,7 @@
 if [ -z  $1 ] || [ -z $2 ]; then
   echo "Usage install_piratebox my_config <part>"
   echo "   Parts: "
+  echo "       pyForum        : Installs basic python forum; set up piratebox.conf yourself"
   echo "       init_openwrt   : Initializes the package on openwrt routers"
   echo "       part2          : sets Permissions and links correctly"
   exit 1
@@ -32,5 +33,11 @@ if [ $2 = 'init_openwrt' ] ; then
   chmod a+rw $CHATFOLDER/cgi-bin/data.pso
 fi
 
+if [ $2 = 'pyForum' ] ; then
+    cp -v /opt/piratebox/src/forest.py  $CHATFOLDER/cgi-bin
+    cp -v /opt/piratebox/src/forest.css $CHATFOLDER/
+    mkdir -p /opt/piratebox/forumspace
+    chmod a+rw -R  /opt/piratebox/forumspace
+fi
   
   

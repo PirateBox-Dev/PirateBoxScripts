@@ -121,7 +121,9 @@ $BRIDGE  $INTERFACE "
        start-stop-daemon -m -S -b -p $PIDFILE_CHAT -x $PIRATEBOX/bin/chatserver.sh -- $CHATFOLDER
        echo  $?
        #Writing init-message and reset chat..
-       echo $CHATMSG > $CHATFOLDER/cgi-bin/data.pso  
+       if [ "$RESET_CHAT"  = "yes" ] ; then
+          echo $CHATMSG > $CHATFOLDER/cgi-bin/data.pso   
+       fi
      fi
 
     ;;
