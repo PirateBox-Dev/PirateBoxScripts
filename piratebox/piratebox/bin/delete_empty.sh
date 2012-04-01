@@ -1,23 +1,12 @@
 #!/bin/sh
-# Deletes 0 Byte Files
-
-
-#Field Seperator
-IFS='
-'
 
 cd $1
-array=(`ls -1 `)
+ls_list=$( ls )
 
-len=${#array[*]}
-
-i=0
-while [ $i -lt $len ]; do
-  if [ ! -s ${array[$i]} ] ; then
-    echo "Deleting 0 Byte file ${array[$i]}"
-    rm ${array[$i]}
-  fi
-  let i++
+for filename in $ls_list  
+do
+   if [ ! -s $filename ] ; then
+      echo "Deleting 0 Byte file $filename"
+      rm $filename
+   fi
 done
-
-
