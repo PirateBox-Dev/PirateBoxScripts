@@ -12,13 +12,13 @@ PACKAGE= $(NAME)_$(VERSION).tar.gz
 
 
 $(PACKAGE): 
-	tar czf $@ -C $(PB_FOLDER) .
+	tar czf $@ $(PB_FOLDER) 
 
 
 all: $(PACKAGE)
 
-clean: cleanbuild
-	-rm -f $(PACKAGE)
+clean: 
+	rm -f $(PACKAGE)
 
 .PHONY: all clean
 

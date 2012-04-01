@@ -58,6 +58,7 @@ CMD_DNSMASQ="-x $PIDFILE_DNSMASQ  -h -H $CONF_HOSTS -a $IP  -R  --address=/#/$IP
 case "$1" in
   start)
     log_daemon_msg "Starting script piratebox "
+    echo ""
 
     if [ "$DO_IW" = "yes" ] ; then
        log_daemon_msg " Setting up Interface (iw) "
@@ -104,7 +105,7 @@ $BRIDGE  $INTERFACE "
        rm  $FOLDER/tmp*
 
        log_daemon_msg "Starting droopy..."
-       start-stop-daemon -m --start --background  --pidfile $PIDFILE_DROOPY --exec $PIRATEBOX/bin/droopy -- -H $HOST -d $FOLDER -p $IMAGE -m "$TEXT" 
+       start-stop-daemon -m --start --background  --pidfile $PIDFILE_DROOPY --exec $PIRATEBOX/bin/droopy -- -H $HOST -d $FOLDER -p $IMAGE -m "$TEXT"  -c "$DROOPY_INCLUDE" 
        log_end_msg $?
 
        #Start SimpleHTTP 

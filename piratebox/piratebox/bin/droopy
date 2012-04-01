@@ -6,6 +6,7 @@
 # Licensed under the New BSD License.
 
 # Changelog
+#   20120401 * Input of chatbox from outside... extend modularisation
 #   20120317 * MStrubel; no upload of index.html
 #   20110314 * MStrubel; hostname as param
 #   20110310 * MStrubel; Centraized PB-Chat and hostname :)
@@ -81,6 +82,7 @@ Usage: droopy [options] [PORT]
 Options:
   -h, --help                            show this help message and exit
   -H, --hostname                        set hostname
+  -c, --chatbox                         include something 
   -m MESSAGE, --message MESSAGE         set the message
   -p PICTURE, --picture PICTURE         set the picture
   -d DIRECTORY, --directory DIRECTORY   set the directory to upload files to
@@ -178,7 +180,8 @@ function onunload() {
   </div>
 </div>
 
-''' + piratebox_chat  + '''
+%(pb_chat)s 
+
 </body></html>
 '''
 
@@ -195,7 +198,7 @@ successtmpl = '''<html><head><LINK rel="shortcut icon" href="http://%(hostname)s
   </div>
 </div>
 
-''' + piratebox_chat  + '''
+$(pb_chat)s
 
 </center>
 </body>
@@ -215,7 +218,8 @@ errortmpl = '''<html><head><LINK rel="shortcut icon" href="http://%(hostname)s:8
   </div>
 </div>
 
-''' + piratebox_chat  + '''
+$(pb_chat)s
+
 </center>
 </body>
 </html>
@@ -597,6 +601,7 @@ class HTTPUploadHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
         # 20110314 Start - add hostname in template var
         dico["hostname"] = hostname_pb 
+        dico["pb_chat"]  = piratebox_chat
         # 20110314 End
 
         return templates[page] % dico
@@ -757,8 +762,9 @@ def parse_args(cmd=None):
 
     Parse sys.argv[1:] if no argument is passed.
     """
-# 20110314 added hostname
-    global picture, message, port, directory, must_save_options , hostname_pb 
+# 20110314 added hostname 
+# 20120401 added piratebox_chat
+    global picture, message, port, directory, must_save_options , hostname_pb , piratebox_chat
 
     if cmd == None:
         cmd = sys.argv[1:]
@@ -769,8 +775,8 @@ def parse_args(cmd=None):
     opts, args = None, None
     try:
 # 20110314 - Added Hostname as opt
-        opts, args = getopt.gnu_getopt(cmd, "H:p:m:d:h",
-                                       ["hostname=","picture=","message=",
+        opts, args = getopt.gnu_getopt(cmd, "c:H:p:m:d:h",
+                                       ["chatbox=","hostname=","picture=","message=",
                                         "directory=", "help",
                                         "save-config","delete-config"])
     except Exception, e:
@@ -784,6 +790,10 @@ def parse_args(cmd=None):
         elif o in ["-H", "--hostname" ] :
             hostname_pb = a
 # 20110314 End
+# 20120401 Start
+        elif o in ["-c", "--chatbox" ] :
+            piratebox_chat = a 
+# 20120401 End
         elif o in ["-m", "--message"] :
             message = a
                 
