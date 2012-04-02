@@ -6,6 +6,7 @@
 # Licensed under the New BSD License.
 
 # Changelog
+#   20120402 * Return success Message for iOS devices # Thank you "Reventlov"
 #   20120401 * Input of chatbox from outside... extend modularisation
 #   20120317 * MStrubel; no upload of index.html
 #   20110314 * MStrubel; hostname as param
@@ -229,8 +230,21 @@ linkurltmpl = '''<div class="box">
 <a href="http://stackp.online.fr/droopy-ip.php?port=%(port)d"> %(discover)s
 </a></div>'''
 
+# 20120402 Start
+iostmpl = ''' <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+ <HTML>
+       <HEAD>
+               <TITLE>Success</TITLE>
+       </HEAD>
+       <BODY>
+               Success
+       </BODY>
+ </HTML> '''
 
-templates = {"main": maintmpl, "success": successtmpl, "error": errortmpl}
+
+# 20120402                                                            
+templates = { "ios": iostmpl, "main": maintmpl, "success": successtmpl, "error": errortmpl }
+# 20120402 End
 
 # -- Translations
 
@@ -614,6 +628,10 @@ class HTTPUploadHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             self.send_header('Content-type', mimetypes.guess_type(picture)[0]) 
             self.end_headers()
             self.wfile.write(open(picture, 'rb').read())
+# 20120402 Start
+        elif self.path == '/library/test/success.html':
+            self.send_html(self.html("ios"))
+# 20120402 End
         else:
             self.send_html(self.html("main"))
 
