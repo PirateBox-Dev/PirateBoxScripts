@@ -1,7 +1,12 @@
 #!/bin/sh
 
+IFS='
+'
+
+
+
 cd $1
-ls_list=$( ls )
+ls_list=$( ls -l )
 
 for filename in $ls_list  
 do
