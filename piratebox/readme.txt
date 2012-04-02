@@ -46,8 +46,8 @@ What to do? / Install
       or
       # mount /dev/usbstick /opt/piratebox/share
   > copy over the *.htm files from the /opt/piratebox/src/ folder to your share-folder
-     # cp -v /opt/piratebox/src/.* /opt/piratebox/share
-     # cp -v /opt/piratebox/src/*  /opt/piratebox/share
+  >  you can use the installation step:
+     /opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf prepShare 
   >  Ensure you copied all .* files  
       # ls -la /opt/piratebox/share 
   > define your personall options in
