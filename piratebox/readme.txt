@@ -20,6 +20,8 @@
 ##                              http://www.triv.org.uk/~nelis/forest
 ##                              https://github.com/thatotherguy/piratebox
 ##                Configure dnsmasq interface in piratebox.conf
+##                More customization in /opt/piratebox.conf
+##                Possibility to change upload directory
 
 What to do? / Install
 ---------------------
