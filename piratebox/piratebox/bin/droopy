@@ -199,7 +199,7 @@ successtmpl = '''<html><head><LINK rel="shortcut icon" href="http://%(hostname)s
   </div>
 </div>
 
-$(pb_chat)s
+%(pb_chat)s
 
 </center>
 </body>
@@ -219,7 +219,7 @@ errortmpl = '''<html><head><LINK rel="shortcut icon" href="http://%(hostname)s:8
   </div>
 </div>
 
-$(pb_chat)s
+%(pb_chat)s
 
 </center>
 </body>
