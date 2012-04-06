@@ -1,3 +1,31 @@
+##########################################################################
+## PirateBox-Manager (By Cale Black)
+##########################################################################
+## Quick installer / manager for the Laptop PirateBox project
+## For both advanced and basic users
+## created by Cale Black (cablack@rams.colostate.edu)  2012-05-05
+## Liscenced by GPL
+## Changes: (0.6.9b)
+##		Initial GitHub Release
+##		Fixed a bug that wouldn't allow you to view download folder or chat
+##		In version b got rid of the sudo su that caused a loop
+
+More info and updates at: CyberNihilism.net
+and			  forum.daviddarts.com
+
+TODO:
+	Finalize Menu
+	Add a splash screen with ASCII PirateBox logo
+	Add manage files (opens PB folder in nautilaus)
+	Add Manual	
+	Create a Config option
+	Add Debugging
+	Interface for managing files (may wait until GUI)
+
+	LiveCD Fork
+##########################################################################
+## PirateBox for Laptops Scripts (By Matthias Strubel)
+##########################################################################
 ## Piratebox for debian laptops --> scripts
 ##   created by Matthias Strubel (matthias.strubel@aod-rpg.de)  2011-02-22
 ##   licenced by gpl ;; please feel for improvements or feedback :)
