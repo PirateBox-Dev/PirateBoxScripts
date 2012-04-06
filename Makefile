@@ -46,7 +46,7 @@ $(OPENWRT_CONFIG_FOLDER):
 	sed 's:DO_IFCONFIG="yes":DO_IFCONFIG="no":'  -i $@/piratebox.conf 
 	sed 's:USE_APN="yes":USE_APN="no":'  -i $@/piratebox.conf 
 	sed 's:DNSMASQ_INTERFACE="-i wlan0":DNSMASQ_INTERFACE="":' -i $@/piratebox.conf 
-	sed 's:192.168.77:192\.168.1:g' -i $@/piratebox.conf 
+	sed 's:192.168.77:192.168.1:g' -i $@/piratebox.conf 
 	sed 's:192.168.77:192.168.1:g' -i $@/hosts 
 
 $(TGZ_IMAGE_FILE):
