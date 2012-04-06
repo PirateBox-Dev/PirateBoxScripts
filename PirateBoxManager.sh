@@ -57,7 +57,7 @@ chmod 777 /opt/piratebox/chat/cgi-bin/data.pso
 # Add these to lines to /etc/hosts
 #sudo sed "192.168.77.1  piratebox.lan i\ 192.168.77.1  
 #Bash denies access to /etc/hosts
-piratebox" > /etc/hosts
+#piratebox" > /etc/hosts
 echo "192.168.77.1  piratebox.lan">>/etc/hosts
 echo "192.168.77.1  piratebox">>/etc/hosts
 service network-manager stop
@@ -72,7 +72,6 @@ echo "4) Just Download the Scripts"
 echo "5) Edit piratebox.conf"
 echo "6) Edit hostapd.conf (SSID, Channel, Driver, etc)"
 echo "7) Quit"
-
 ;;
 
 "Start PirateBox")
