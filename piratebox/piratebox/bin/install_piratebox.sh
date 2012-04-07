@@ -57,4 +57,5 @@ if [ $2 = 'pyForum' ] ; then
     cp -v /opt/piratebox/src/forest.css $CHATFOLDER/
     mkdir -p /opt/piratebox/forumspace
     chmod a+rw -R  /opt/piratebox/forumspace
+    echo "Copied the file. Now edit conf/piratebox.conf and uncomment #FORUM_LINK_HTML " 
 fi
