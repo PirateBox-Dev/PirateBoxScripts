@@ -1,5 +1,5 @@
 NAME = piratebox-scripts
-VERSION = 0.4
+VERSION = 0.4.1
 ARCH = all
 PB_FOLDER=piratebox
 PB_SRC_FOLDER=$(PB_FOLDER)/$(PB_FOLDER)
