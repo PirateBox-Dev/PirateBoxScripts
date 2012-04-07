@@ -72,7 +72,7 @@ CSS_PATH = '/forest.css'
 BOARD_TITLE = 'PirateBox Board'
 # Simple Description of the board, appears at the top of each page
 BOARD_DESCRIPTION = """PirateBox Board. Put media reviews or questions here.<br>
-<A HREF="http://piratebox">Click here to go back to the main site</a> """
+<A HREF="http://piratebox.lan">Click here to go back to the main site</a> """
 # How dates are stored (see python time module for details)
 DATE_FORMAT = '%d %b %Y %H:%M:%S'
 # If no author name is given, then this is the default.
