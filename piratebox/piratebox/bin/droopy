@@ -615,7 +615,7 @@ class HTTPUploadHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
         # 20110314 Start - add hostname in template var
         dico["hostname"] = hostname_pb 
-        dico["pb_chat"]  = piratebox_chat
+        dico["pb_chat"]  = piratebox_chat % dico
         # 20110314 End
 
         return templates[page] % dico
