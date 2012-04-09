@@ -5,10 +5,10 @@
 ## For both advanced and basic users
 ## created by Cale Black (cablack@rams.colostate.edu)  2012-05-05
 ## Liscenced by GPL
-## Changes: (0.6.9b)
-##		Initial GitHub Release
-##		Fixed a bug that wouldn't allow you to view download folder or chat
-##		In version b got rid of the sudo su that caused a loop
+## Changes: (0.7.1)
+##		Fixed a major bug that wouldn't allow execution (Sorry about that :(    )
+##		Added Splash screen
+##		Moved Dev notes to one place
 
 More info and updates at: CyberNihilism.net
 and			  forum.daviddarts.com
