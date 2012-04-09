@@ -21,51 +21,50 @@
 # Credit for the wonderful scripts goes to Matthias Strubel
 #                       
 ###########################################################################################################################
-###########Version 0.7.0###################################################################################################
-# Fixed not being able to execute because of a token (Sorry about that :(   )
-# Added Splash Screen
-# Cleaned up Dev notes
+###########Version 0.7.7###################################################################################################
+# Updated for Version .4 of PirateBoxScripts
+# Created Configuration Sub-Menu
 ###########################################################################################################################
-#Final menu will be:
-#1) Install PirateBox (only run one time)
-#2) Start PirateBox
-#3) Stop PirateBox
-#4) Manage Files
-#5) Download scripts only
-#6) Configure
-#7) Exit 
+#Final menu will be: []
+#1) Install PirateBox (only run one time) [X]
+#2) Start PirateBox [X]
+#3) Stop PirateBox [X]
+#4) Manage Files []
+#5) Download scripts only [X]
+#6) Configure []
+#7) Exit [X]
 ###########################################################################################################################
-#Add manage files (opens PB folder in nautilaus)
+#Add manage files (opens PB folder in nautilaus) []
 ###########################################################################################################################
-#Create a Config option and include this option and the one below
+#Create a Config option and include hostapd.conf and piratebox.conf [X]
 #Add quick configuration options:
-#	- Change SSID
-#	- Change Channel
-#	- Change PirateBox upload / download directory
-#	- Clear PirateBox upload / download directory
+#	- Change SSID []
+#	- Change Channel []
+#	- Change PirateBox upload / download directory []
+#	- Clear PirateBox upload / download directory []
 ###########################################################################################################################
-#View Upload folder
+#View Upload folder []
 #Possible to do real time updates?
 #Interface for managing files (may wait until GUI)
 ###########################################################################################################################
-#Add Debugging for:
-#No package for dnsmasq and hostapd (Older versions 10.04 and below do not have universe debs active by default, see comments in option 1)
-#No network access after taking PirateBox down (use sudo service network-manager stop and than sudo service network-manager start
-#No access to chat or viewing uploaded folder (Copy from /opt/piratebox/conf/hosts to /etc/hosts)
-#Debug Manual from http://piratebox.aod-rpg.de/dokuwiki/doku.php?id=script-package_for_debian_based_systemes&DokuWiki=93bea71d696f0054de696f11d8acc0e0
+#Add Debugging for: []
+#No package for dnsmasq and hostapd (Older versions 10.04 and below do not have universe debs active by default, see comments in option 1) []
+#No network access after taking PirateBox down (use sudo service network-manager stop and than sudo service network-manager start []
+#No access to chat or viewing uploaded folder (Copy from /opt/piratebox/conf/hosts to /etc/hosts) []
+#Debug Manual from http://piratebox.aod-rpg.de/dokuwiki/doku.php?id=script-package_for_debian_based_systemes&DokuWiki=93bea71d696f0054de696f11d8acc0e0 []
 ###########################################################################################################################
-#Add ManPages / Manual
-#Quick Manual
-#History of PirateBox
-#Debug Manual from above
-#Help Develope? page
-#Art
+#Add ManPages / Manual []
+#Quick Manual []
+#History of PirateBox []
+#Debug Manual from above []
+#Help Develope? page []
+#Art []
 ###########################################################################################################################
-#GUI
+#GUI []
 #Make out of wxPython
 #Or Java later on for multiple OS?
 ###########################################################################################################################
-#LiveCD fork
+#LiveCD fork []
 #PirateBox Manager LiveCD version
 #Disables install option (will be installed by default)
 ###########################################################################################################################
