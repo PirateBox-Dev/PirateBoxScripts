@@ -1,5 +1,5 @@
  
-#!/bin/bash'\E[47;31m'
+#!/bin/bash
                                                                                                    
 # _|_|_|_|_|                                                  _|_|_|                _|                
 #     _|      _|_|    _|  _|_|  _|  _|_|    _|_|    _|  _|_|  _|    _|  _|    _|  _|_|_|_|    _|_|    
@@ -75,7 +75,7 @@ __________ __                 __         __________   ____    ____
  |____|   |__| |__|  (____  /|__|   \___  >______  / |  |_    _|  | /__/\_ |
  	 	          \/            \/       \/  |____|  |____|       \/        
 \033[0m"                                   
-echo -e '\E[0;0m'""
+echo ""
 PS3='Please enter your choice: '
 options=("Quick install for Debian based systems" "Start PirateBox" "Stop PirateBox" "Manage PirateBox Download / Upload Folder" "Just Download the Scripts" "Configure" "Quit")
 
