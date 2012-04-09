@@ -82,16 +82,16 @@ __________.__                 __         __________  .____    ____.
 "                                   
 
 PS3='Please enter your choice: '
-options=("Quick install for Debian based systems" "Start PirateBox" "Stop PirateBox" "Just Download the Scripts" "Edit piratebox.conf" "Edit hostapd.conf" "Quit")
+options=("Quick install for Debian based systems" "Start PirateBox" "Stop PirateBox" "Just Download the Scripts" "Configure" "Quit")
 
 select opt in "${options[@]}"
 do
     case $opt in
 "Quick install for Debian based systems")
-sudo wget -P /tmp/ http://piratebox.aod-rpg.de/dokuwiki/lib/exe/fetch.php?media=piratebox-0.3.3-scripts-1.9.tar.gz
+sudo wget -P /tmp/ http://piratebox.aod-rpg.de/dokuwiki/lib/exe/fetch.php?media=piratebox-scripts_0.4.tar.gz
 cd /tmp/
-sudo cp -i fetch.php?media=piratebox-0.3.3-scripts-1.9.tar.gz piratebox-0.3.3-scripts-1.9.tar.gz
-sudo rm fetch.php?media=piratebox-0.3.3-scripts-1.9.tar.gz
+sudo cp -i fetch.php?media=piratebox-scripts_0.4.tar.gz piratebox-scripts_0.4.tar.gz
+sudo rm fetch.php?media=piratebox-scripts_0.4.tar.gz
 sudo tar xzvf piratebox*.tar.gz
 cd /tmp/piratebox
 sudo cp -rv piratebox /opt
@@ -108,9 +108,8 @@ echo "1) Quick install for Debian based systems"
 echo "2) Start PirateBox"
 echo "3) Stop PirateBox"
 echo "4) Just Download the Scripts"
-echo "5) Edit piratebox.conf"
-echo "6) Edit hostapd.conf (SSID, Channel, Driver, etc)"
-echo "7) Quit"
+echo "5) Configure"
+echo "6) Quit"
 ;;
 
 "Start PirateBox")
@@ -120,9 +119,8 @@ echo "1) Quick install for Debian based systems"
 echo "2) Start PirateBox"
 echo "3) Stop PirateBox"
 echo "4) Just Download the Scripts"
-echo "5) Edit piratebox.conf"
-echo "6) Edit hostapd.conf (SSID, Channel, Driver, etc)"
-echo "7) Quit"
+echo "5) Configure"
+echo "6) Quit"
 ;;
 
 "Stop PirateBox")
@@ -133,9 +131,8 @@ echo "1) Quick install for Debian based systems"
 echo "2) Start PirateBox"
 echo "3) Stop PirateBox"
 echo "4) Just Download the Scripts"
-echo "5) Edit piratebox.conf"
-echo "6) Edit hostapd.conf (SSID, Channel, Driver, etc)"
-echo "7) Quit"
+echo "5) Configure"
+echo "6) Quit"
 ;;
 
 "Just Download the Scripts")
@@ -149,36 +146,33 @@ echo "1) Quick install for Debian based systems"
 echo "2) Start PirateBox"
 echo "3) Stop PirateBox"
 echo "4) Just Download the Scripts"
-echo "5) Edit piratebox.conf"
-echo "6) Edit hostapd.conf (SSID, Channel, Driver, etc)"
-echo "7) Quit"
+echo "5) Configure"
+echo "6) Quit"
+;;
+"Quit")
+break
 ;;
 
+"Configure")
+echo ""
+PS3='Please enter your choice: '
+config=("Edit piratebox.conf" "Edit hostapd.conf" "Quit")
+select config in "${config[@]}"
+do
+    case $config in
 "Edit piratebox.conf")
 nano /opt/piratebox/conf/piratebox.conf
-echo ""
-echo "1) Quick install for Debian based systems"
-echo "2) Start PirateBox"
-echo "3) Stop PirateBox"
-echo "4) Just Download the Scripts"
-echo "5) Edit piratebox.conf"
-echo "6) Edit hostapd.conf (SSID, Channel, Driver, etc)"
-echo "7) Quit"
 ;;
 
 "Edit hostapd.conf")
 nano /opt/piratebox/conf/hostapd.conf
-echo ""
-echo "1) Quick install for Debian based systems"
-echo "2) Start PirateBox"
-echo "3) Stop PirateBox"
-echo "4) Just Download the Scripts"
-echo "5) Edit piratebox.conf"
-echo "6) Edit hostapd.conf (SSID, Channel, Driver, etc)"
-echo "7) Quit"
 ;;
-
 "Quit")
+break
+;;
+*) echo invalid option;;
+esac
+done
 break
 ;;
 *) echo invalid option;;
