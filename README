@@ -1,3 +1,4 @@
+ 
 ##########################################################################
 ## PirateBox-Manager (By Cale Black)
 ##########################################################################
@@ -5,10 +6,11 @@
 ## For both advanced and basic users
 ## created by Cale Black (cablack@rams.colostate.edu)  2012-05-05
 ## Liscenced by GPL
-## Changes: (0.6.9b)
-##		Initial GitHub Release
-##		Fixed a bug that wouldn't allow you to view download folder or chat
-##		In version b got rid of the sudo su that caused a loop
+## Changes: (0.8.0)
+## Added Color to splash screen
+## Added quick change for SSID and Channel Number
+## Added clear upload / download folder in config (may move it to main menu)
+## Updated download only for script version .4
 
 More info and updates at: CyberNihilism.net
 and			  forum.daviddarts.com
