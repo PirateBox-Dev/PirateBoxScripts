@@ -8,7 +8,7 @@ cp_src () {
    dest_path=$2
 
 #   filelist=( .BACK.TO.MENU.htm  .READ.ME.htm favicon.ico piratebox-logo-small.png piratebox-logo.png )
-
+   echo "Copy over from $source_path/ to $dest_path/ "
    cp -v $source_path/.BACK.TO.MENU.htm   $dest_path/
    cp -v $source_path/.READ.ME.htm        $dest_path/
    cp -v $source_path/favicon.ico         $dest_path/
@@ -35,6 +35,7 @@ fi
 . $1
 
 if [ $2 = 'init_openwrt' ] ; then
+  echo "-------------- Initialize PirateBoxScripts -----------"
   #Load openwrt-common config and procedures file!
   . /etc/piratebox.common
 #  cp -v $pb_pbmount/src/* "$pb_share"
