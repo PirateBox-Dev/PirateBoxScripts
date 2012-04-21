@@ -813,7 +813,7 @@ class HTTPUploadHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
         # 20110314 Start - add hostname in template var
         dico["hostname"] = hostname_pb 
-        dico["pb_chat"]  = piratebox_chat % dico
+        dico["pb_chat"]  = piratebox_chat 
         # 20110314 End
         if(userdirs == True):
                dico["userdiropts"]  = userdirform % dico
