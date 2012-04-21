@@ -121,10 +121,15 @@ useAnondir=1
 userdirform='''
 <br><A HREF="javascript:show('advanced_fields')">%(advanced)s</a>
 <hr width="20%%">
+<div height="150px">
 <fieldset id="advanced_fields" style="hidden:true;display:none">
 <br>%(userdirname)s <input name="subdir" type="textbox">
 <p>%(userdirpassword)s <input name="secret" type="textbox">
 </fieldset>
+</div>
+<br />
+<br />
+<br />
 '''
 
 
