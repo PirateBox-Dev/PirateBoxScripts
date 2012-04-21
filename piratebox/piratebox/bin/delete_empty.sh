@@ -6,7 +6,8 @@ IFS='
 
 
 cd $1
-ls_list=$( ls -1 )
+#ls_list=$( ls -1 )
+ls_list=$( find ./ )
 
 for filename in $ls_list  
 do
