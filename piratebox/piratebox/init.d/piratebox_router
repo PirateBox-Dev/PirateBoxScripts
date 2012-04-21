@@ -108,7 +108,7 @@ $BRIDGE  $INTERFACE "
        rm  $UPLOADFOLDER/tmp*
        #Delete 0 Byte Files
        delete_empty.sh  $UPLOADFOLDER
-       start-stop-daemon -m -S -b  -p $PIDFILE_DROOPY -x $PIRATEBOX/bin/droopy -- -H $HOST -d $UPLOADFOLDER -p $IMAGE -m "$TEXT"  -c "$DROOPY_INCLUDE" 
+       start-stop-daemon -m -S -b  -p $PIDFILE_DROOPY -x $PIRATEBOX/bin/droopy -- -H $HOST -d $UPLOADFOLDER -p $IMAGE -m "$TEXT" $DROOPY_USERDIR -c "$DROOPY_INCLUDE" 
        echo  $?
 
        #Start SimpleHTTP 
