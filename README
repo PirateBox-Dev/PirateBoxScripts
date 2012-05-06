@@ -36,19 +36,21 @@ TODO:
 
 Complete Download-Package and more Infos on: http://piratebox.aod-rpg.de
 
-Branches:
-    piratebox (this)	- Scripts Based on David Dart's file-compilation
-                          init.d scripts for Debian based laptops 
-   
-   lighttpd  -  Beta-Scripts for running PirateBox with
-                          lighttpd. (alpha perl-droopy-version)
+Packages contains only scripts based PirateBox scripts without any webserver.
+PirateBox scripts can:
+   * Setup WLAN Interface via iw
+   * Setup hotspot functionality (hostapd)
+   * Setup IP Adresses of wlan interface
+   * Can add wlan interface to an existing bridge
+   * Sets Up a DHCP Server with redirect to wlan-interface IP
+   * Upload landing page
+   * Browse Uploaded files
+   * Announce "Internet yes" for iOS
+   * ShoutBox
+   * Optional small python Forum
 
-   imageboard - Scripts for running Piratebox and Kareha Imagebaord
+For lighttpd Version see: https://github.com/MaStr/PirateBoxScripts_Webserver 
 
-
-TODO:
-   * Improve landing page (jquery, css ... )
-   * Lighttpd: Exchange perl & python scripts with ash version (no fat interpreter on routers is much better)
   
 REFERENCES:
   - The PirateBox project:
